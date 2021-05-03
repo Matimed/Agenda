@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Agenda.DTO
+namespace Agenda.DAO
 {
-    public class Class1
+    class PrincipalDAO
     {
     }
 }

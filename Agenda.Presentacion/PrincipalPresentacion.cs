@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Agenda.Presentacion
 {
-    public partial class Form1 : Form
+    public partial class PrincipalPresentacion : Form
     {
-        public Form1()
+        public PrincipalPresentacion()
         {
             InitializeComponent();
         }
