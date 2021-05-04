@@ -41,7 +41,6 @@ namespace Agenda.Presentacion
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NroPrioridad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrioridadTexto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,22 +158,11 @@ namespace Agenda.Presentacion
             this.PrioridadTexto.Name = "PrioridadTexto";
             this.PrioridadTexto.ReadOnly = true;
             // 
-            // btnSalir
-            // 
-            this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSalir.Location = new System.Drawing.Point(18, 251);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(88, 25);
-            this.btnSalir.TabIndex = 5;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            // 
             // PrincipalPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 288);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnPersonas);
@@ -201,6 +189,5 @@ namespace Agenda.Presentacion
         private System.Windows.Forms.Button btnPersonas;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnSalir;
     }
 }
