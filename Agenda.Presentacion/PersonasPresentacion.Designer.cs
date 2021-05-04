@@ -36,7 +36,7 @@ namespace Agenda.Presentacion
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.picBuscar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -106,15 +106,15 @@ namespace Agenda.Presentacion
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             // 
-            // btnSalir
+            // btnCancelar
             // 
-            this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSalir.Location = new System.Drawing.Point(12, 272);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(98, 25);
-            this.btnSalir.TabIndex = 7;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.Location = new System.Drawing.Point(12, 272);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(98, 25);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // txtFiltro
             // 
@@ -151,7 +151,7 @@ namespace Agenda.Presentacion
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picBuscar);
             this.Controls.Add(this.txtFiltro);
-            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.gvPersonas);
@@ -173,7 +173,7 @@ namespace Agenda.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.PictureBox picBuscar;
         private System.Windows.Forms.Label label1;
