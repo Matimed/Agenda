@@ -44,5 +44,13 @@ namespace Agenda.DAO
                 $"FROM Eventos a JOIN Personas b ON a.IdPersona = b.Id " +
                 $"WHERE a.FechaHora BETWEEN '{fInicio} 00:00:00' and '{fFinal} 23:59:59';"));
         }
+
+        public int ModificarEvento(EventoDTO nuevoEvento)
+        {
+            return HelperDAO.EditarDB($"UPDATE Eventos SET FechaHora = " +
+                $"'{nuevoEvento.FechaHora.ToString("yyyyMMdd HH:mm:ss")}', " +
+                $"Descripcion = '{nuevoEvento.Descripcion}', Prioridad = '{nuevoEvento.Prioridad}', " +
+                $"IdPersona = '{nuevoEvento.IdPersona}' WHERE Id = {nuevoEvento.Id}");
+        }
     }
 }

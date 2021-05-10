@@ -14,5 +14,9 @@ namespace Agenda.Negocio
         {
             return eventosDAO.CargarEventos(fechaInicio, fechaFinal);
         }
+        public int ModificarEvento (EventoDTO nuevoEvento)
+        {
+            return eventosDAO.ModificarEvento(nuevoEvento);
+        }
     }
 }

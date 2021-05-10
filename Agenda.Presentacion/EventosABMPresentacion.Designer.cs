@@ -67,6 +67,7 @@ namespace Agenda.Presentacion
             this.btnCancelar.TabIndex = 26;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -78,6 +79,7 @@ namespace Agenda.Presentacion
             this.btnGuardar.TabIndex = 25;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label3
             // 
@@ -232,7 +234,7 @@ namespace Agenda.Presentacion
             this.Controls.Add(this.btnSeleccionar);
             this.Name = "EventosABMPresentacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Evento";
+            this.Text = "Nuevo Evento";
             this.Load += new System.EventHandler(this.EventosABMPresentacion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

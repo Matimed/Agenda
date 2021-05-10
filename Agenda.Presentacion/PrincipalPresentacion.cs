@@ -47,9 +47,15 @@ namespace Agenda.Presentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            EventosABMPresentacion eventosABM = new EventosABMPresentacion();
-            eventosABM.Nuevo();
-            eventosABM.ShowDialog();
+            try
+            {
+                EventosABMPresentacion eventosABM = new EventosABMPresentacion();
+                eventosABM.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
