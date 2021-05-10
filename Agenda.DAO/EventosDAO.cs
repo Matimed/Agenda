@@ -42,7 +42,7 @@ namespace Agenda.DAO
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.IdPersona, a.Descripcion," +
                 $" a.Prioridad, a.FechaHora, (b.Nombre + ' ' + b.Apellido) AS NombreApellido " +
                 $"FROM Eventos a JOIN Personas b ON a.IdPersona = b.Id " +
-                $"WHERE a.FechaHora between '{fInicio} 00:00:00' and '{fFinal} 23:59:59';"));
+                $"WHERE a.FechaHora BETWEEN '{fInicio} 00:00:00' and '{fFinal} 23:59:59';"));
         }
     }
 }

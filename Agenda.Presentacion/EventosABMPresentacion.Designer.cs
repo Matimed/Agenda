@@ -29,35 +29,34 @@ namespace Agenda.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtPersona = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.rbtBaja = new System.Windows.Forms.RadioButton();
             this.rbtMedia = new System.Windows.Forms.RadioButton();
             this.rbtAlta = new System.Windows.Forms.RadioButton();
             this.dtpDia = new System.Windows.Forms.DateTimePicker();
             this.dtpHora = new System.Windows.Forms.DateTimePicker();
-            this.picBuscar = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscar)).BeginInit();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label4
+            // lblTitulo
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 29);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Evento:";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(12, 19);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(93, 29);
+            this.lblTitulo.TabIndex = 27;
+            this.lblTitulo.Text = "Evento:";
             // 
             // btnCancelar
             // 
@@ -90,7 +89,6 @@ namespace Agenda.Presentacion
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 24;
             this.label3.Text = "Prioridad";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -114,24 +112,24 @@ namespace Agenda.Presentacion
             this.label1.TabIndex = 22;
             this.label1.Text = "Descripción:";
             // 
-            // txtApellido
+            // txtPersona
             // 
-            this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPersona.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApellido.Location = new System.Drawing.Point(129, 120);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.ReadOnly = true;
-            this.txtApellido.Size = new System.Drawing.Size(181, 20);
-            this.txtApellido.TabIndex = 21;
+            this.txtPersona.Location = new System.Drawing.Point(129, 120);
+            this.txtPersona.Name = "txtPersona";
+            this.txtPersona.ReadOnly = true;
+            this.txtPersona.Size = new System.Drawing.Size(134, 20);
+            this.txtPersona.TabIndex = 21;
             // 
-            // txtNombre
+            // txtDescripcion
             // 
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.Location = new System.Drawing.Point(129, 91);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(211, 20);
-            this.txtNombre.TabIndex = 20;
+            this.txtDescripcion.Location = new System.Drawing.Point(129, 91);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(211, 20);
+            this.txtDescripcion.TabIndex = 20;
             // 
             // label5
             // 
@@ -156,7 +154,6 @@ namespace Agenda.Presentacion
             this.rbtBaja.TabStop = true;
             this.rbtBaja.Text = "Baja";
             this.rbtBaja.UseVisualStyleBackColor = true;
-            this.rbtBaja.CheckedChanged += new System.EventHandler(this.rbtBaja_CheckedChanged);
             // 
             // rbtMedia
             // 
@@ -169,7 +166,6 @@ namespace Agenda.Presentacion
             this.rbtMedia.TabStop = true;
             this.rbtMedia.Text = "Media";
             this.rbtMedia.UseVisualStyleBackColor = true;
-            this.rbtMedia.CheckedChanged += new System.EventHandler(this.rbtMedia_CheckedChanged);
             // 
             // rbtAlta
             // 
@@ -182,7 +178,6 @@ namespace Agenda.Presentacion
             this.rbtAlta.TabStop = true;
             this.rbtAlta.Text = "Alta";
             this.rbtAlta.UseVisualStyleBackColor = true;
-            this.rbtAlta.CheckedChanged += new System.EventHandler(this.rbtAlta_CheckedChanged);
             // 
             // dtpDia
             // 
@@ -205,40 +200,40 @@ namespace Agenda.Presentacion
             this.dtpHora.Size = new System.Drawing.Size(87, 20);
             this.dtpHora.TabIndex = 33;
             // 
-            // picBuscar
+            // btnSeleccionar
             // 
-            this.picBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picBuscar.Location = new System.Drawing.Point(316, 117);
-            this.picBuscar.Name = "picBuscar";
-            this.picBuscar.Size = new System.Drawing.Size(24, 24);
-            this.picBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBuscar.TabIndex = 34;
-            this.picBuscar.TabStop = false;
+            this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSeleccionar.Location = new System.Drawing.Point(266, 119);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(76, 21);
+            this.btnSeleccionar.TabIndex = 35;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
             // 
             // EventosABMPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 235);
-            this.Controls.Add(this.picBuscar);
             this.Controls.Add(this.dtpHora);
             this.Controls.Add(this.dtpDia);
             this.Controls.Add(this.rbtAlta);
             this.Controls.Add(this.rbtMedia);
             this.Controls.Add(this.rbtBaja);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txtPersona);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.btnSeleccionar);
             this.Name = "EventosABMPresentacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Evento";
             this.Load += new System.EventHandler(this.EventosABMPresentacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,20 +241,20 @@ namespace Agenda.Presentacion
 
         #endregion
 
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtPersona;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbtBaja;
         private System.Windows.Forms.RadioButton rbtMedia;
         private System.Windows.Forms.RadioButton rbtAlta;
         private System.Windows.Forms.DateTimePicker dtpDia;
         private System.Windows.Forms.DateTimePicker dtpHora;
-        private System.Windows.Forms.PictureBox picBuscar;
+        private System.Windows.Forms.Button btnSeleccionar;
     }
 }
