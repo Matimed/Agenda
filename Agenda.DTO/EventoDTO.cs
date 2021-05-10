@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Agenda.DTO
 {
-    public class EventosDTO
+    public class EventoDTO
     {
         public int Id { get; set; }
         public DateTime FechaHora { get; set; }

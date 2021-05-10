@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Agenda.DTO
 {
-    public class PersonasDTO
+    public class PersonaDTO
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
