@@ -31,7 +31,8 @@ namespace Agenda.Presentacion
                 if (gvEventos.SelectedRows.Count == 1)
                 {
                     EventosABMPresentacion eventosABM = new EventosABMPresentacion();
-                    eventosABM.Modificar((EventoDTO)gvEventos.SelectedRows[0].DataBoundItem);
+                    eventosABM.Modificacion = true;
+                    eventosABM.CargarForm((EventoDTO)gvEventos.SelectedRows[0].DataBoundItem);
                     eventosABM.ShowDialog();
                 }
                 else
@@ -50,6 +51,8 @@ namespace Agenda.Presentacion
             try
             {
                 EventosABMPresentacion eventosABM = new EventosABMPresentacion();
+                eventosABM.Modificacion = false;
+                eventosABM.CargarForm(new EventoDTO());
                 eventosABM.ShowDialog();
             }
             catch (Exception ex)

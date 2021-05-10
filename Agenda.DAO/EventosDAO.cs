@@ -52,5 +52,13 @@ namespace Agenda.DAO
                 $"Descripcion = '{nuevoEvento.Descripcion}', Prioridad = '{nuevoEvento.Prioridad}', " +
                 $"IdPersona = '{nuevoEvento.IdPersona}' WHERE Id = {nuevoEvento.Id}");
         }
+
+        public int NuevoEvento (EventoDTO nuevoEvento)
+        {
+            return HelperDAO.EditarDB($"INSERT INTO Eventos " +
+                $"(FechaHora, Descripcion, Prioridad, IdPersona) " +
+                $"VALUES ('{nuevoEvento.FechaHora.ToString("yyyyMMdd HH:mm:ss")}', " +
+                $"'{nuevoEvento.Descripcion}', '{nuevoEvento.Prioridad}', '{nuevoEvento.IdPersona}')");
+        }
     }
 }

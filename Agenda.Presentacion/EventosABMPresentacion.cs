@@ -15,13 +15,16 @@ namespace Agenda.Presentacion
     {
         public PersonaDTO PersonaSeleccionada { get; set; }
 
+        public bool Modificacion { get; set; }
+        
         public EventoDTO EventoSeleccionado { get; set; }
 
-        EventosNegocio EventosNegocio = new EventosNegocio();
+        EventosNegocio eventosNegocio = new EventosNegocio();
 
         public EventosABMPresentacion()
         {
             InitializeComponent();
+            Modificacion = false;
         }
 
         private void EventosABMPresentacion_Load(object sender, EventArgs e)
@@ -29,33 +32,47 @@ namespace Agenda.Presentacion
             ActiveControl = lblTitulo;
         }
 
-        public void Modificar(EventoDTO eventoDTO)
+        public void CargarForm(EventoDTO eventoDTO)
         {
             EventoSeleccionado = eventoDTO;
-            Text = "Modificar Evento";
-            dtpDia.Value = eventoDTO.FechaHora;
-            dtpHora.Value = eventoDTO.FechaHora;
-            txtDescripcion.Text = eventoDTO.Descripcion;
-            txtPersona.Text = eventoDTO.PersonaNombreApellido;
             PersonaSeleccionada = new PersonaDTO();
-            PersonaSeleccionada.Id = eventoDTO.IdPersona;
-            switch (eventoDTO.Prioridad)
+            if (Modificacion)
             {
-                case 0:
-                    rbtBaja.Checked = true;
-                    break;
-                case 1:
-                    rbtMedia.Checked = true;
-                    break;
-                case 2:
-                    rbtAlta.Checked = true;
-                    break;
-                default:
-                    rbtBaja.Checked = false;
-                    rbtMedia.Checked = false;
-                    rbtAlta.Checked = false;
-                    break;
+                Text = "Modificar Evento";
+                dtpDia.Value = eventoDTO.FechaHora;
+                dtpHora.Value = eventoDTO.FechaHora;
+                txtDescripcion.Text = eventoDTO.Descripcion;
+                txtPersona.Text = eventoDTO.PersonaNombreApellido;
+                PersonaSeleccionada.Id = eventoDTO.IdPersona;
+                switch (eventoDTO.Prioridad)
+                {
+                    case 0:
+                        rbtBaja.Checked = true;
+                        break;
+                    case 1:
+                        rbtMedia.Checked = true;
+                        break;
+                    case 2:
+                        rbtAlta.Checked = true;
+                        break;
+                    default:
+                        rbtBaja.Checked = false;
+                        rbtMedia.Checked = false;
+                        rbtAlta.Checked = false;
+                        break;
+                }
             }
+            else
+            {
+                Text = "Crear Evento";
+                txtDescripcion.Text = string.Empty;
+                txtPersona.Text = string.Empty;
+            }
+        }
+        public void Modificar(EventoDTO eventoDTO)
+        {
+            Modificacion = true;
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -81,11 +98,20 @@ namespace Agenda.Presentacion
             {
                 EventoSeleccionado.Prioridad = 0;
             }
-            //Solo si es modificar
-            MessageBox.Show(
-                $"{EventosNegocio.ModificarEvento(EventoSeleccionado)} registro /s actualizados correctamente",
-                "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DialogResult = DialogResult.OK;
+            if (Modificacion)
+            {
+                MessageBox.Show(
+                                $"{eventosNegocio.ModificarEvento(EventoSeleccionado)} registro /s actualizados correctamente",
+                                "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show($"{eventosNegocio.NuevoEvento(EventoSeleccionado)} registros creados correctamente",
+                    "Operacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+            }
+            
         }
     }
 }

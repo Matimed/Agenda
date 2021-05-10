@@ -10,13 +10,20 @@ namespace Agenda.Negocio
     public class EventosNegocio
     {
         EventosDAO eventosDAO = new EventosDAO();
+
         public List<EventoDTO> CargarEventos(DateTime fechaInicio, DateTime fechaFinal)
         {
             return eventosDAO.CargarEventos(fechaInicio, fechaFinal);
         }
+
         public int ModificarEvento (EventoDTO nuevoEvento)
         {
             return eventosDAO.ModificarEvento(nuevoEvento);
+        }
+
+        public int NuevoEvento(EventoDTO nuevoEvento)
+        {
+            return eventosDAO.NuevoEvento(nuevoEvento);
         }
     }
 }
