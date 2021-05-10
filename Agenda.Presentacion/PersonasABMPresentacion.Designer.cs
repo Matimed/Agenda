@@ -76,9 +76,9 @@ namespace Agenda.Presentacion
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(14, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Nombre:";
+            this.label1.Text = "Nombres:";
             // 
             // label2
             // 
@@ -87,9 +87,9 @@ namespace Agenda.Presentacion
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Apellido:";
+            this.label2.Text = "Apellidos:";
             // 
             // label3
             // 
@@ -130,9 +130,9 @@ namespace Agenda.Presentacion
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(234, 29);
+            this.label4.Size = new System.Drawing.Size(217, 29);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Datos de la persona:";
+            this.label4.Text = "Datos del contacto:";
             // 
             // PersonasABMPresentacion
             // 
@@ -149,7 +149,7 @@ namespace Agenda.Presentacion
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Name = "PersonasABMPresentacion";
-            this.Text = "Personas ABM";
+            this.Text = "Contactos ABM";
             this.ResumeLayout(false);
             this.PerformLayout();
 
