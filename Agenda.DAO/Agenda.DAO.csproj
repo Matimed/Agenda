@@ -43,7 +43,6 @@
     <Compile Include="EventosDAO.cs" />
     <Compile Include="HelperDAO.cs" />
     <Compile Include="PersonasDAO.cs" />
-    <Compile Include="PrincipalDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

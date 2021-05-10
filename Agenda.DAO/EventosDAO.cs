@@ -23,6 +23,20 @@ namespace Agenda.DAO
                     eventoDTO.Descripcion = (string)dataRow["Descripcion"];
                     eventoDTO.PersonaNombreApellido = (string)dataRow["NombreApellido"];
                     eventoDTO.Prioridad = (int)dataRow["Prioridad"];
+                    switch (eventoDTO.Prioridad)
+                    {
+                        case 0:
+                            eventoDTO.PrioridadTexto = "Baja";
+                            break;
+                        case 1:
+                            eventoDTO.PrioridadTexto = "Media";
+                            break;
+                        case 2:
+                            eventoDTO.PrioridadTexto = "Alta";
+                            break;
+
+                    }
+                    //Pregunta:
                     //Hago una funcion que lea prioridad y escriba el prioridad texto o lo configuro en presentacion
                     //eventoDTO.PrioridadTexto = (string)dataRow["PrioridadTexto"];
                     listaEventos.Add(eventoDTO);

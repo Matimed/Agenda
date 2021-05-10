@@ -13,7 +13,10 @@ namespace Agenda.Presentacion
 {
     public partial class PrincipalPresentacion : Form
     {
+
         EventosNegocio eventosNegocio = new EventosNegocio();
+        private List<DateTime> Fecha { get; set; }
+
         public PrincipalPresentacion()
         {
             InitializeComponent();
@@ -21,7 +24,19 @@ namespace Agenda.Presentacion
 
         private void cldFecha_DateSelected(object sender, DateRangeEventArgs e)
         {
-            gvEventos.DataSource = eventosNegocio.CargarEventos(cldFecha.SelectionStart, cldFecha.SelectionEnd);
+            try
+            {
+                List<DateTime> fecha = new List<DateTime>();
+                fecha.Add(cldFecha.SelectionStart);
+                fecha.Add(cldFecha.SelectionEnd);
+                gvEventos.DataSource = eventosNegocio.CargarEventos(fecha[0], fecha[1]);
+                Fecha = fecha;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Algo salio mal al seleccionar la fecha:" +
+                  ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -34,6 +49,7 @@ namespace Agenda.Presentacion
                     eventosABM.Modificacion = true;
                     eventosABM.CargarForm((EventoDTO)gvEventos.SelectedRows[0].DataBoundItem);
                     eventosABM.ShowDialog();
+                    gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha[0], Fecha[1]);
                 }
                 else
                 {
@@ -54,6 +70,7 @@ namespace Agenda.Presentacion
                 eventosABM.Modificacion = false;
                 eventosABM.CargarForm(new EventoDTO());
                 eventosABM.ShowDialog();
+                gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha[0], Fecha[1]);
             }
             catch (Exception ex)
             {

@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="EventosNegocio.cs" />
     <Compile Include="PersonasNegocio.cs" />
-    <Compile Include="PrincipalNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
