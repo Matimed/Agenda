@@ -9,8 +9,7 @@ namespace Agenda.DAO
 {
     public class PersonasDAO
     {
-        PersonaDTO personaDTO = new PersonaDTO();
-
+        
         public List<PersonaDTO> CargarListaDTOs(DataTable dataTable)
         {
             List<PersonaDTO> listaPersonas = new List<PersonaDTO>();
@@ -39,6 +38,12 @@ namespace Agenda.DAO
                 $"SELECT Id, FechaNacimiento, Nombre, Apellido FROM Personas;"));
         }
 
+        public List<PersonaDTO> BuscarPersonas(string filtro)
+        {
+            return CargarListaDTOs(HelperDAO.CargarDataTable(
+                $"SELECT Id, Nombre, Apellido, FechaNacimiento FROM Personas " +
+                $"WHERE Nombre LIKE '%{filtro}%' or Apellido LIKE '%{filtro}%'"));
+        }
 
         public int NuevaPersona(PersonaDTO personaDTO)
         {

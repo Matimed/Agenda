@@ -29,6 +29,7 @@ namespace Agenda.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonasPresentacion));
             this.gvPersonas = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,12 +42,16 @@ namespace Agenda.Presentacion
             this.picBuscar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.picReload = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvPersonas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             this.SuspendLayout();
             // 
             // gvPersonas
             // 
+            this.gvPersonas.AllowUserToAddRows = false;
+            this.gvPersonas.AllowUserToDeleteRows = false;
             this.gvPersonas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -59,16 +64,18 @@ namespace Agenda.Presentacion
             this.FechaNacimiento});
             this.gvPersonas.Location = new System.Drawing.Point(12, 47);
             this.gvPersonas.Name = "gvPersonas";
+            this.gvPersonas.ReadOnly = true;
             this.gvPersonas.RowHeadersVisible = false;
             this.gvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvPersonas.Size = new System.Drawing.Size(497, 219);
-            this.gvPersonas.TabIndex = 0;
+            this.gvPersonas.TabIndex = 1;
             // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
             // Nombre
@@ -76,18 +83,21 @@ namespace Agenda.Presentacion
             this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombres";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Apellido
             // 
             this.Apellido.DataPropertyName = "Apellido";
             this.Apellido.HeaderText = "Apellidos";
             this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // FechaNacimiento
             // 
             this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
             this.FechaNacimiento.HeaderText = "Fecha de nacimiento";
             this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.ReadOnly = true;
             // 
             // btnAgregar
             // 
@@ -95,7 +105,7 @@ namespace Agenda.Presentacion
             this.btnAgregar.Location = new System.Drawing.Point(305, 272);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(98, 25);
-            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -106,7 +116,7 @@ namespace Agenda.Presentacion
             this.btnModificar.Location = new System.Drawing.Point(409, 272);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(98, 25);
-            this.btnModificar.TabIndex = 6;
+            this.btnModificar.TabIndex = 5;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -114,6 +124,7 @@ namespace Agenda.Presentacion
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(12, 272);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 25);
@@ -128,17 +139,20 @@ namespace Agenda.Presentacion
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Location = new System.Drawing.Point(53, 12);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(424, 20);
-            this.txtFiltro.TabIndex = 8;
+            this.txtFiltro.Size = new System.Drawing.Size(396, 20);
+            this.txtFiltro.TabIndex = 0;
             // 
             // picBuscar
             // 
             this.picBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picBuscar.Location = new System.Drawing.Point(485, 8);
+            this.picBuscar.Image = ((System.Drawing.Image)(resources.GetObject("picBuscar.Image")));
+            this.picBuscar.Location = new System.Drawing.Point(455, 9);
             this.picBuscar.Name = "picBuscar";
             this.picBuscar.Size = new System.Drawing.Size(24, 24);
+            this.picBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBuscar.TabIndex = 9;
             this.picBuscar.TabStop = false;
+            this.picBuscar.Click += new System.EventHandler(this.picBuscar_Click);
             // 
             // label1
             // 
@@ -155,16 +169,31 @@ namespace Agenda.Presentacion
             this.btnSeleccionar.Location = new System.Drawing.Point(201, 272);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(98, 25);
-            this.btnSeleccionar.TabIndex = 11;
+            this.btnSeleccionar.TabIndex = 3;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
+            // picReload
+            // 
+            this.picReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picReload.Image = ((System.Drawing.Image)(resources.GetObject("picReload.Image")));
+            this.picReload.Location = new System.Drawing.Point(485, 9);
+            this.picReload.Name = "picReload";
+            this.picReload.Size = new System.Drawing.Size(24, 24);
+            this.picReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picReload.TabIndex = 11;
+            this.picReload.TabStop = false;
+            this.picReload.Click += new System.EventHandler(this.picReload_Click);
+            // 
             // PersonasPresentacion
             // 
+            this.AcceptButton = this.btnSeleccionar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(519, 309);
+            this.Controls.Add(this.picReload);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picBuscar);
@@ -179,6 +208,7 @@ namespace Agenda.Presentacion
             this.Load += new System.EventHandler(this.PersonasPresentacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvPersonas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picReload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +228,6 @@ namespace Agenda.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.PictureBox picReload;
     }
 }

@@ -80,5 +80,31 @@ namespace Agenda.Presentacion
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void picBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gvPersonas.DataSource = personasNegocio.BuscarPersonas(txtFiltro.Text);
+                txtFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void picReload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gvPersonas.DataSource = personasNegocio.CargarPersonas();
+                txtFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

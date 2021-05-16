@@ -15,6 +15,11 @@ namespace Agenda.Negocio
             return personasDAO.CargarPersonas();
         }
 
+        public List<PersonaDTO> BuscarPersonas(string filtro)
+        {
+            return personasDAO.BuscarPersonas(filtro);
+        }
+
         public int NuevaPersona(PersonaDTO personaDTO)
         {
             return personasDAO.NuevaPersona(personaDTO);
