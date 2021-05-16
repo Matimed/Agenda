@@ -29,6 +29,7 @@ namespace Agenda.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventosABMPresentacion));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -234,6 +235,7 @@ namespace Agenda.Presentacion
             this.Controls.Add(this.txtPersona);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.btnSeleccionar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EventosABMPresentacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Evento";
