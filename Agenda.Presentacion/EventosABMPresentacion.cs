@@ -15,65 +15,61 @@ namespace Agenda.Presentacion
     {
         public PersonaDTO PersonaSeleccionada { get; set; }
 
-        public bool Modificacion { get; set; }
-        
         public EventoDTO EventoSeleccionado { get; set; }
 
+        public bool Modificacion { get; set; }
+        
         EventosNegocio eventosNegocio = new EventosNegocio();
 
-        public EventosABMPresentacion()
+        public EventosABMPresentacion(bool modificar)
         {
             InitializeComponent();
-            Modificacion = false;
+            Modificacion = modificar;
         }
 
         private void EventosABMPresentacion_Load(object sender, EventArgs e)
         {
-            ActiveControl = lblTitulo;
-        }
-
-        public void CargarForm(EventoDTO eventoDTO)
-        {
-            EventoSeleccionado = eventoDTO;
-            PersonaSeleccionada = new PersonaDTO();
             if (Modificacion)
             {
                 Text = "Modificar Evento";
-                dtpDia.Value = eventoDTO.FechaHora;
-                dtpHora.Value = eventoDTO.FechaHora;
-                txtDescripcion.Text = eventoDTO.Descripcion;
-                txtPersona.Text = eventoDTO.PersonaNombreApellido;
-                PersonaSeleccionada.Id = eventoDTO.IdPersona;
-                switch (eventoDTO.Prioridad)
-                {
-                    case 0:
-                        rbtBaja.Checked = true;
-                        break;
-                    case 1:
-                        rbtMedia.Checked = true;
-                        break;
-                    case 2:
-                        rbtAlta.Checked = true;
-                        break;
-                    default:
-                        rbtBaja.Checked = false;
-                        rbtMedia.Checked = false;
-                        rbtAlta.Checked = false;
-                        break;
-                }
             }
             else
             {
+                EventoSeleccionado = new EventoDTO();
                 Text = "Crear Evento";
                 txtDescripcion.Text = string.Empty;
                 txtPersona.Text = string.Empty;
             }
-        }
-        public void Modificar(EventoDTO eventoDTO)
-        {
-            Modificacion = true;
+            ActiveControl = lblTitulo;
         }
 
+        public void CargarEvento(EventoDTO eventoDTO)
+        {
+            EventoSeleccionado = eventoDTO;
+            PersonaSeleccionada = new PersonaDTO();
+            dtpDia.Value = eventoDTO.FechaHora;
+            dtpHora.Value = eventoDTO.FechaHora;
+            txtDescripcion.Text = eventoDTO.Descripcion;
+            txtPersona.Text = eventoDTO.PersonaNombreApellido;
+            PersonaSeleccionada.Id = eventoDTO.IdPersona;
+            switch (eventoDTO.Prioridad)
+            {
+                case 0:
+                    rbtBaja.Checked = true;
+                    break;
+                case 1:
+                    rbtMedia.Checked = true;
+                    break;
+                case 2:
+                    rbtAlta.Checked = true;
+                    break;
+                default:
+                    rbtBaja.Checked = false;
+                    rbtMedia.Checked = false;
+                    rbtAlta.Checked = false;
+                    break;
+            }
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -124,8 +120,11 @@ namespace Agenda.Presentacion
         {
             PersonasPresentacion personasPresentacion = new PersonasPresentacion(true);
             personasPresentacion.ShowDialog();
-            PersonaSeleccionada = personasPresentacion.PersonaSeleccionada;
-            txtPersona.Text = PersonaSeleccionada.Nombre + PersonaSeleccionada.Apellido;
+            if (personasPresentacion.DialogResult == DialogResult.OK)
+            {
+                PersonaSeleccionada = personasPresentacion.PersonaSeleccionada;
+                txtPersona.Text = PersonaSeleccionada.Nombre + " " + PersonaSeleccionada.Apellido;
+            }
         }
     }
 }

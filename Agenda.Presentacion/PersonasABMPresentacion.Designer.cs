@@ -149,6 +149,7 @@ namespace Agenda.Presentacion
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Name = "PersonasABMPresentacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contactos ABM";
             this.ResumeLayout(false);
             this.PerformLayout();
