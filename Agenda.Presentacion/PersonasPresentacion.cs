@@ -13,7 +13,10 @@ namespace Agenda.Presentacion
 {
     public partial class PersonasPresentacion : Form
     {
+        public PersonaDTO PersonaSeleccionada { get; set; }
+
         PersonasNegocio personasNegocio = new PersonasNegocio();
+
         public PersonasPresentacion(bool seleccionar)
         {
             InitializeComponent();
@@ -52,6 +55,12 @@ namespace Agenda.Presentacion
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            PersonaSeleccionada = (PersonaDTO)gvPersonas.SelectedRows[0].DataBoundItem;
+            DialogResult = DialogResult.OK;
         }
     }
 }

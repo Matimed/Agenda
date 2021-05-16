@@ -72,7 +72,6 @@ namespace Agenda.Presentacion
         public void Modificar(EventoDTO eventoDTO)
         {
             Modificacion = true;
-            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -82,36 +81,51 @@ namespace Agenda.Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            EventoSeleccionado.Descripcion = txtDescripcion.Text;
-            TimeSpan horario = dtpHora.Value - dtpHora.Value.Date;
-            EventoSeleccionado.FechaHora = dtpDia.Value.Date.Add(horario);
-            EventoSeleccionado.IdPersona = PersonaSeleccionada.Id;
-            if (rbtAlta.Checked)
+            //ToDo: Validar entradas.
+            try
             {
-                EventoSeleccionado.Prioridad = 2;
+                EventoSeleccionado.Descripcion = txtDescripcion.Text;
+                TimeSpan horario = dtpHora.Value - dtpHora.Value.Date;
+                EventoSeleccionado.FechaHora = dtpDia.Value.Date.Add(horario);
+                EventoSeleccionado.IdPersona = PersonaSeleccionada.Id;
+                if (rbtAlta.Checked)
+                {
+                    EventoSeleccionado.Prioridad = 2;
+                }
+                else if (rbtMedia.Checked)
+                {
+                    EventoSeleccionado.Prioridad = 1;
+                }
+                else if (rbtBaja.Checked)
+                {
+                    EventoSeleccionado.Prioridad = 0;
+                }
+                if (Modificacion)
+                {
+                    MessageBox.Show(
+                                    $"{eventosNegocio.ModificarEvento(EventoSeleccionado)} registro /s actualizados correctamente",
+                                    "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show($"{eventosNegocio.NuevoEvento(EventoSeleccionado)} registros creados correctamente",
+                        "Operacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
             }
-            else if (rbtMedia.Checked)
+            catch (Exception ex)
             {
-                EventoSeleccionado.Prioridad = 1;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (rbtBaja.Checked)
-            {
-                EventoSeleccionado.Prioridad = 0;
-            }
-            if (Modificacion)
-            {
-                MessageBox.Show(
-                                $"{eventosNegocio.ModificarEvento(EventoSeleccionado)} registro /s actualizados correctamente",
-                                "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show($"{eventosNegocio.NuevoEvento(EventoSeleccionado)} registros creados correctamente",
-                    "Operacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-            }
-            
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            PersonasPresentacion personasPresentacion = new PersonasPresentacion(true);
+            personasPresentacion.ShowDialog();
+            PersonaSeleccionada = personasPresentacion.PersonaSeleccionada;
+            txtPersona.Text = PersonaSeleccionada.Nombre + PersonaSeleccionada.Apellido;
         }
     }
 }
