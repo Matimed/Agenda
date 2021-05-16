@@ -50,6 +50,7 @@
     <Compile Include="EventosABMPresentacion.Designer.cs">
       <DependentUpon>EventosABMPresentacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperPresentacion.cs" />
     <Compile Include="PersonasABMPresentacion.cs">
       <SubType>Form</SubType>
     </Compile>

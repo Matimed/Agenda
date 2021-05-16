@@ -78,9 +78,16 @@ namespace Agenda.Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //ToDo: Validar entradas.
             try
             {
+                if (PersonaSeleccionada == null)
+                {
+                    throw new Exception("Debe seleccionar un contacto para crear un evento.");
+                }
+                if (!rbtAlta.Checked && !rbtMedia.Checked && !rbtBaja.Checked)
+                {
+                    throw new Exception("Debe seleccionar un nivel de prioridad.");
+                }
                 EventoSeleccionado.Descripcion = txtDescripcion.Text;
                 TimeSpan horario = dtpHora.Value - dtpHora.Value.Date;
                 EventoSeleccionado.FechaHora = dtpDia.Value.Date.Add(horario);
@@ -97,18 +104,18 @@ namespace Agenda.Presentacion
                 {
                     EventoSeleccionado.Prioridad = 0;
                 }
-                if (Modificacion)
+                if (string.IsNullOrEmpty(txtDescripcion.Text))
                 {
-                    MessageBox.Show(
-                                    $"{eventosNegocio.ModificarEvento(EventoSeleccionado)} registro /s actualizados correctamente",
-                                    "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
+                    DialogResult resp = MessageBox.Show("Esta por crear un evento sin descripcion. ¿Desea continuar?",
+                        "Descripcion vacia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (resp== DialogResult.Yes)
+                    {
+                        EditarDB();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show($"{eventosNegocio.NuevoEvento(EventoSeleccionado)} registros creados correctamente",
-                        "Operacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
+                    EditarDB();
                 }
             }
             catch (Exception ex)
@@ -117,6 +124,22 @@ namespace Agenda.Presentacion
             }
         }
 
+        public void EditarDB()
+        {
+            if (Modificacion)
+            {
+                MessageBox.Show(
+                                $"{eventosNegocio.ModificarEvento(EventoSeleccionado)} registro /s actualizados correctamente",
+                                "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show($"{eventosNegocio.NuevoEvento(EventoSeleccionado)} registros creados correctamente",
+                    "Operacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+            }
+        }
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             PersonasPresentacion personasPresentacion = new PersonasPresentacion(true);

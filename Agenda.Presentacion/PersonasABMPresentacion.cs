@@ -58,7 +58,7 @@ namespace Agenda.Presentacion
         {
             try
             {
-                //ToDo: Validar datos  
+                HelperPresentacion.ValidarTextosVacios(txtNombre.Text, txtApellido.Text);
                 PersonaSeleccionada.Nombre = txtNombre.Text;
                 PersonaSeleccionada.Apellido = txtApellido.Text;
                 PersonaSeleccionada.FechaNacimiento = dtpFechaNacimiento.Value;
