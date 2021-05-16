@@ -49,10 +49,10 @@ namespace Agenda.DAO
             return listaEventos;
         }
 
-        public List<EventoDTO> CargarEventos(DateTime fechaInicio, DateTime fechaFinal)
+        public List<EventoDTO> CargarEventos(List<DateTime> fecha)
         {
-            string fInicio = fechaInicio.ToString("yyyyMMdd");
-            string fFinal = fechaFinal.ToString("yyyyMMdd");
+            string fInicio = fecha[0].ToString("yyyyMMdd");
+            string fFinal = fecha[1].ToString("yyyyMMdd");
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.IdPersona, a.Descripcion," +
                 $" a.Prioridad, a.FechaHora, (b.Nombre + ' ' + b.Apellido) AS NombreApellido " +
                 $"FROM Eventos a JOIN Personas b ON a.IdPersona = b.Id " +

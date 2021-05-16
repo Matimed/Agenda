@@ -2,10 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Agenda.DTO;
+using System.Data;
 
 namespace Agenda.DAO
 {
-    class PersonasDAO
+    public class PersonasDAO
     {
+        PersonaDTO personaDTO = new PersonaDTO();
+
+        public List<PersonaDTO> CargarListaDTOs (DataTable dataTable)
+        {
+            List<PersonaDTO> listaPersonas = new List<PersonaDTO>();
+            try
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    PersonaDTO personaDTO = new PersonaDTO();
+                    personaDTO.Id = (int)dataRow["Id"];
+                    personaDTO.FechaNacimiento = (DateTime)dataRow["FechaNacimiento"];
+                    personaDTO.Nombre = (string)dataRow["Nombre"];
+                    personaDTO.Apellido = (string)dataRow["Apellido"];
+                    listaPersonas.Add(personaDTO);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al convertir los datos" + ex);
+            }
+            return listaPersonas;
+        }
+
+        public List<PersonaDTO> CargarPersonas ()
+        {
+            return CargarListaDTOs(HelperDAO.CargarDataTable(
+                $"SELECT Id, FechaNacimiento, Nombre, Apellido FROM Personas;"));
+        }
     }
 }

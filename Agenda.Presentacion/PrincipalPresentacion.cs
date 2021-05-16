@@ -22,14 +22,21 @@ namespace Agenda.Presentacion
             InitializeComponent();
         }
 
-        private void cldFecha_DateSelected(object sender, DateRangeEventArgs e)
+
+        private void PrincipalPresentacion_Load(object sender, EventArgs e)
+        {
+            CargarEventos(DateTime.Now, DateTime.Now);
+        }
+
+
+        private void CargarEventos(DateTime fechaInicio, DateTime fechaFinal)
         {
             try
             {
                 List<DateTime> fecha = new List<DateTime>();
-                fecha.Add(cldFecha.SelectionStart);
-                fecha.Add(cldFecha.SelectionEnd);
-                gvEventos.DataSource = eventosNegocio.CargarEventos(fecha[0], fecha[1]);
+                fecha.Add(fechaInicio);
+                fecha.Add(fechaFinal);
+                gvEventos.DataSource = eventosNegocio.CargarEventos(fecha);
                 Fecha = fecha;
             }
             catch (Exception ex)
@@ -37,6 +44,11 @@ namespace Agenda.Presentacion
                 MessageBox.Show("Algo salio mal al seleccionar la fecha:" +
                   ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cldFecha_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            CargarEventos(cldFecha.SelectionStart, cldFecha.SelectionEnd);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -49,7 +61,7 @@ namespace Agenda.Presentacion
                     eventosABM.Modificacion = true;
                     eventosABM.CargarForm((EventoDTO)gvEventos.SelectedRows[0].DataBoundItem);
                     eventosABM.ShowDialog();
-                    gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha[0], Fecha[1]);
+                    gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha);
                 }
                 else
                 {
@@ -70,12 +82,20 @@ namespace Agenda.Presentacion
                 eventosABM.Modificacion = false;
                 eventosABM.CargarForm(new EventoDTO());
                 eventosABM.ShowDialog();
-                gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha[0], Fecha[1]);
+                gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnPersonas_Click(object sender, EventArgs e)
+        {
+            PersonasPresentacion personasPresentacion = new PersonasPresentacion();
+            personasPresentacion.ShowDialog();
+            gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha);
+        }
+
     }
 }
