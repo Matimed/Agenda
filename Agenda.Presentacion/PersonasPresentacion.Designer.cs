@@ -145,6 +145,7 @@ namespace Agenda.Presentacion
             // picBuscar
             // 
             this.picBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picBuscar.BackColor = System.Drawing.Color.Transparent;
             this.picBuscar.Image = ((System.Drawing.Image)(resources.GetObject("picBuscar.Image")));
             this.picBuscar.Location = new System.Drawing.Point(455, 9);
             this.picBuscar.Name = "picBuscar";
@@ -177,6 +178,7 @@ namespace Agenda.Presentacion
             // picReload
             // 
             this.picReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picReload.BackColor = System.Drawing.Color.Transparent;
             this.picReload.Image = ((System.Drawing.Image)(resources.GetObject("picReload.Image")));
             this.picReload.Location = new System.Drawing.Point(485, 9);
             this.picReload.Name = "picReload";
@@ -191,6 +193,8 @@ namespace Agenda.Presentacion
             this.AcceptButton = this.btnSeleccionar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(519, 309);
             this.Controls.Add(this.picReload);

@@ -62,6 +62,7 @@ namespace Agenda.Presentacion
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Location = new System.Drawing.Point(194, 198);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(98, 25);
@@ -217,8 +218,11 @@ namespace Agenda.Presentacion
             // 
             // EventosABMPresentacion
             // 
+            this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(354, 235);
             this.Controls.Add(this.dtpHora);
             this.Controls.Add(this.dtpDia);
