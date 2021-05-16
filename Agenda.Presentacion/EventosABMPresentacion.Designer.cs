@@ -197,7 +197,7 @@ namespace Agenda.Presentacion
             // dtpHora
             // 
             this.dtpHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpHora.CustomFormat = "HH:mm:ss";
+            this.dtpHora.CustomFormat = "HH:mm";
             this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpHora.Location = new System.Drawing.Point(253, 62);
             this.dtpHora.Name = "dtpHora";
