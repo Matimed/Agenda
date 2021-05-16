@@ -25,15 +25,18 @@ namespace Agenda.Presentacion
                 btnSeleccionar.Visible = true;
             }
             else
-            { 
+            {
                 btnSeleccionar.Visible = false;
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
+                PersonasABMPresentacion personasABMPresentacion = new PersonasABMPresentacion(false);
+                personasABMPresentacion.ShowDialog();
+                gvPersonas.DataSource = personasNegocio.CargarPersonas();
             }
             catch (Exception ex)
             {
@@ -61,6 +64,21 @@ namespace Agenda.Presentacion
         {
             PersonaSeleccionada = (PersonaDTO)gvPersonas.SelectedRows[0].DataBoundItem;
             DialogResult = DialogResult.OK;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PersonasABMPresentacion personasABMPresentacion = new PersonasABMPresentacion(true);
+                personasABMPresentacion.CargarPersona((PersonaDTO)gvPersonas.SelectedRows[0].DataBoundItem);
+                personasABMPresentacion.ShowDialog();
+                gvPersonas.DataSource = personasNegocio.CargarPersonas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

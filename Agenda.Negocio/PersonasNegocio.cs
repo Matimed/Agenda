@@ -14,5 +14,15 @@ namespace Agenda.Negocio
         {
             return personasDAO.CargarPersonas();
         }
+
+        public int NuevaPersona(PersonaDTO personaDTO)
+        {
+            return personasDAO.NuevaPersona(personaDTO);
+        }
+
+        public int ModificarPersona(PersonaDTO personaDTO)
+        {
+            return personasDAO.ModificarPersona(personaDTO);
+        }
     }
 }

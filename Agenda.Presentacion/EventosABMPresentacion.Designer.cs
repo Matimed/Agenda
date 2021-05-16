@@ -185,7 +185,7 @@ namespace Agenda.Presentacion
             // 
             this.dtpDia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDia.CustomFormat = "dd/MM/yyyy";
+            this.dtpDia.CustomFormat = "dd - MM - yyyy";
             this.dtpDia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDia.Location = new System.Drawing.Point(129, 62);
             this.dtpDia.Name = "dtpDia";

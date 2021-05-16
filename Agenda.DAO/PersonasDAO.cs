@@ -11,7 +11,7 @@ namespace Agenda.DAO
     {
         PersonaDTO personaDTO = new PersonaDTO();
 
-        public List<PersonaDTO> CargarListaDTOs (DataTable dataTable)
+        public List<PersonaDTO> CargarListaDTOs(DataTable dataTable)
         {
             List<PersonaDTO> listaPersonas = new List<PersonaDTO>();
             try
@@ -33,10 +33,26 @@ namespace Agenda.DAO
             return listaPersonas;
         }
 
-        public List<PersonaDTO> CargarPersonas ()
+        public List<PersonaDTO> CargarPersonas()
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable(
                 $"SELECT Id, FechaNacimiento, Nombre, Apellido FROM Personas;"));
+        }
+
+
+        public int NuevaPersona(PersonaDTO personaDTO)
+        {
+            return HelperDAO.EditarDB($"INSERT INTO Personas " +
+                $"(FechaNacimiento, Nombre, Apellido) VALUES (" +
+                $"'{personaDTO.FechaNacimiento.ToString("yyyyMMdd")}', " +
+                $"'{personaDTO.Nombre}', '{personaDTO.Apellido}')");
+        }
+        public int ModificarPersona (PersonaDTO personaDTO)
+        {
+            return HelperDAO.EditarDB($"UPDATE Personas SET FechaNacimiento = " +
+                $"'{personaDTO.FechaNacimiento.ToString("yyyyMMdd")}', " +
+                $"Nombre = '{personaDTO.Nombre}', Apellido = '{personaDTO.Apellido}' " +
+                $"WHERE Id = {personaDTO.Id}");
         }
     }
 }
