@@ -14,21 +14,41 @@ namespace Agenda.Presentacion
     public partial class PersonasPresentacion : Form
     {
         PersonasNegocio personasNegocio = new PersonasNegocio();
-        public PersonasPresentacion()
+        public PersonasPresentacion(bool seleccionar)
         {
             InitializeComponent();
+            if (seleccionar)
+            {
+                btnSeleccionar.Visible = true;
+            }
+            else
+            { 
+                btnSeleccionar.Visible = false;
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            try 
+            {
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void PersonasPresentacion_Load(object sender, EventArgs e)
         {
-            gvPersonas.DataSource = personasNegocio.CargarPersonas();
+            try
+            {
+                gvPersonas.DataSource = personasNegocio.CargarPersonas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

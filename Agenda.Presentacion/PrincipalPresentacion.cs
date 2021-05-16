@@ -92,10 +92,16 @@ namespace Agenda.Presentacion
 
         private void btnPersonas_Click(object sender, EventArgs e)
         {
-            PersonasPresentacion personasPresentacion = new PersonasPresentacion();
-            personasPresentacion.ShowDialog();
-            gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha);
+            try
+            {
+                PersonasPresentacion personasPresentacion = new PersonasPresentacion(false);
+                personasPresentacion.ShowDialog();
+                gvEventos.DataSource = eventosNegocio.CargarEventos(Fecha);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
     }
 }

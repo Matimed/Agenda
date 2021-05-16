@@ -59,6 +59,8 @@ namespace Agenda.Presentacion
             this.FechaNacimiento});
             this.gvPersonas.Location = new System.Drawing.Point(12, 47);
             this.gvPersonas.Name = "gvPersonas";
+            this.gvPersonas.RowHeadersVisible = false;
+            this.gvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvPersonas.Size = new System.Drawing.Size(497, 219);
             this.gvPersonas.TabIndex = 0;
             // 
